@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+        <attribute name="cat_date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="cat_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cat_name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="item_cat" inverseEntity="Item" syncable="YES"/>
+        <relationship name="projects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Project" inverseName="categories" inverseEntity="Project" syncable="YES"/>
+        <relationship name="sub_categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sub_Category" inverseName="cates" inverseEntity="Sub_Category" syncable="YES"/>
+    </entity>
+    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
+        <attribute name="coast" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="item_cat" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="items" inverseEntity="Category" syncable="YES"/>
+        <relationship name="item_sub_cat" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sub_Category" inverseName="sub_items" inverseEntity="Sub_Category" syncable="YES"/>
+    </entity>
+    <entity name="Project" representedClassName="Project" syncable="YES" codeGenerationType="class">
+        <attribute name="pro_date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="pro_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pro_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pro_site" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="projects" inverseEntity="Category" syncable="YES"/>
+    </entity>
+    <entity name="Sub_Category" representedClassName="Sub_Category" syncable="YES" codeGenerationType="class">
+        <attribute name="sub_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sub_name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cates" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="sub_categories" inverseEntity="Category" syncable="YES"/>
+        <relationship name="parent_sub" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sub_Category" syncable="YES"/>
+        <relationship name="sub_items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="item_sub_cat" inverseEntity="Item" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Category" positionX="-198" positionY="137" width="128" height="133"/>
+        <element name="Item" positionX="43" positionY="306" width="128" height="120"/>
+        <element name="Project" positionX="-371" positionY="116" width="128" height="118"/>
+        <element name="Sub_Category" positionX="9" positionY="90" width="126" height="118"/>
+    </elements>
+</model>
